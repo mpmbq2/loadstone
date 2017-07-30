@@ -1,5 +1,5 @@
 # loadstone
-CLI for setting up PySpark + Jupyter on a AWS cluster launched via Flintrock
+Forked from jwittenbach to make it easier for me to make personal modifications. CLI for setting up PySpark + Jupyter on a AWS cluster launched via Flintrock
 
 # overview
 Flintrock is a great tool for launching an AWS cluster with Spark installed and ready to go. However, if you want to use PySpark and the Jupyter Notebook to interact with Spark, then there is some more setup to be done. Loadstone is a command-line interface that automates this setup; it will have you in a Jupyter Notebook running PySpark in no time flat.
