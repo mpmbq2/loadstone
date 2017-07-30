@@ -17,18 +17,18 @@ def setup(cluster):
     click.echo('configuring security group...\n')
     configure_sg()
 
-    # clone the lodestone repo which contains scripts for future operations
-    click.echo('downloading lodestone scripts to cluster nodes...\n')
+    # clone the loadstone repo which contains scripts for future operations
+    click.echo('downloading loadstone scripts to cluster nodes...\n')
     run_all("sudo yum -y install git", cluster)
-    run_all("git clone https://github.com/jwittenbach/lodestone", cluster)
+    run_all("git clone https://github.com/mpmbq2/loadstone", cluster)
 
     # run the script for installation on all nodes
     click.echo('running setup scripts on cluster nodes...\n')
-    run_all("bash lodestone/script_all.sh", cluster)
+    run_all("bash loadstone/script_all.sh", cluster)
 
     # run the script for master-specific configurations (Jupyter + Spark config)
     click.echo('running script on the master node...\n')
-    run_master("bash lodestone/script_master.sh", cluster)
+    run_master("bash loadstone/script_master.sh", cluster)
 
 @cli.command()
 @click.argument('packages', nargs=-1)
@@ -78,7 +78,7 @@ def stop(cluster):
 @cli.command()
 @click.argument('cluster')
 def reboot(cluster):
-    run_all('rm -rf lodestone miniconda* .jupyter', cluster)
+    run_all('rm -rf loadstone miniconda* .jupyter', cluster)
 
 def run_all(cmd, cluster):
     call('flintrock run-command ' + cluster + ' "' + cmd + '"', shell=True)
